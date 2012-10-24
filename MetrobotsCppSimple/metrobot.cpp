@@ -38,10 +38,13 @@ void Metrobot::RobotInit(){
 	autonScript = NO_SCRIPT;
 	autonStep = 0;
 	
+	GetWatchdog().SetExpiration( 0.1 );
+	GetWatchdog().SetEnabled( true );
+	
 }
 
 void Metrobot::AutonomousInit(){ 
-
+	
 	Disable();
 	
 	autonTimer->Start();
@@ -114,6 +117,8 @@ void Metrobot::AutonomousPeriodic(){
 	
 	Actuate();
 	PrintToDS();
+	GetWatchdog().Feed();
+	
 }
 
 void Metrobot::AutonomousContinuous(){ Wait( 0.020 ); }
@@ -143,6 +148,8 @@ void Metrobot::TeleopPeriodic(){
 	
 	Actuate();
 	PrintToDS();
+	GetWatchdog().Feed();
+	
 }
 
 void Metrobot::TeleopContinuous(){ Wait( 0.020 ); }
@@ -168,6 +175,7 @@ void Metrobot::DisabledPeriodic(){
 	}
 	
 	Disable();
+	GetWatchdog().Feed();
 
 }
 
