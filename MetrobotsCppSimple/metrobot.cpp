@@ -212,3 +212,5 @@ void Metrobot::PrintToDS(){
 	ds->UpdateLCD();
 
 }
+
+START_ROBOT_CLASS( Metrobot );
