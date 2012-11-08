@@ -13,6 +13,7 @@ MetroPIDController::MetroPIDController( double p_, double i_, double d_, Modes m
 	notifier = new Notifier( MetroPIDController::CallRun , this );
 		
 	source = 0.0;
+	result = 0.0;
 	output = 0.0;
 	setPoint = 0.0;
 	
@@ -49,7 +50,9 @@ void MetroPIDController::Run(){
                 
         }
 
-        output = ( error * p ) + ( totalError * i ) + ( (error-prevError) * d ) + ( isIntegratedOutput ? output : 0.0 );
+        result = ( error * p ) + ( totalError * i ) + ( (error-prevError) * d ) + ( isIntegratedOutput ? output : 0.0 );
+            
+    	output = result;
             
         if ( mode == FEED_FORWARD_PID || mode == TAKE_BACK_HALF_PID ) {
                 

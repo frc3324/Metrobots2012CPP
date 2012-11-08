@@ -39,6 +39,7 @@ class MetroPIDController {
 		bool isEnabled;
 		
 		double source;
+		double result;
 		double output;
 		double setPoint;
 		
