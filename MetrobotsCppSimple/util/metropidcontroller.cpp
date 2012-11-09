@@ -50,7 +50,7 @@ void MetroPIDController::Run(){
                 
         }
 
-        result = ( error * p ) + ( totalError * i ) + ( (error-prevError) * d ) + ( isIntegratedOutput ? output : 0.0 );
+        result = ( error * p ) + ( totalError * i ) + ( (error-prevError) * d ) + ( isIntegratedOutput ? result : 0.0 );
             
     	output = result;
             
